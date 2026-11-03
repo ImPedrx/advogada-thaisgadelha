@@ -40,16 +40,16 @@ export function Faq() {
       <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.5fr]">
         <Reveal>
           <h2 className="font-serif text-[clamp(2.4rem,5vw,4.2rem)] leading-[1] font-medium tracking-[-.02em]">
-            Dúvidas <span className="it text-wine">frequentes</span>
+            Dúvidas <span className="it text-brand">frequentes</span>
           </h2>
         </Reveal>
         <div className="border-b border-line">
           {faq.map((f, i) => (
             <div key={f.q} className="border-t border-line">
               <button onClick={() => setOpen(open === i ? null : i)} aria-expanded={open === i}
-                className="flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left text-lg font-medium transition hover:text-wine">
+                className="flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left text-lg font-medium transition hover:text-brand">
                 {f.q}
-                <motion.span animate={{ rotate: open === i ? 45 : 0 }} className="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-line text-wine">
+                <motion.span animate={{ rotate: open === i ? 45 : 0 }} className="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-line text-brand">
                   <Plus size={18} aria-hidden="true" />
                 </motion.span>
               </button>
@@ -106,8 +106,8 @@ export function FloatingWhatsApp() {
       {show && (
         <motion.a href="#equipe" aria-label="Falar com as advogadas pelo WhatsApp"
           initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0, opacity: 0 }}
-          className="fixed right-5 bottom-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-wine text-paper shadow-[0_12px_40px_-8px_rgba(94,26,40,.7)]">
-          <span className="absolute inset-0 animate-ping rounded-full bg-wine/40" />
+          className="fixed right-5 bottom-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-brand text-paper shadow-[0_12px_40px_-8px_rgba(22,48,79,.7)]">
+          <span className="absolute inset-0 animate-ping rounded-full bg-brand/40" />
           <MessageCircle className="relative" size={24} />
         </motion.a>
       )}

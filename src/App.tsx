@@ -50,7 +50,7 @@ function Nav() {
           <a className="transition hover:text-paper" href="#equipe">Equipe</a>
           <a className="transition hover:text-paper" href="#duvidas">Dúvidas</a>
         </div>
-        <a href="#equipe" className="rounded-md bg-wine px-4 py-2 text-sm font-semibold text-paper transition hover:bg-wine-2">Agendar</a>
+        <a href="#equipe" className="rounded-md bg-brand px-4 py-2 text-sm font-semibold text-paper transition hover:bg-brand-2">Agendar</a>
       </nav>
     </motion.header>
   );
@@ -74,7 +74,7 @@ function Hero() {
       </div>
       {/* Escurece as fotos para o texto: de cima para baixo no celular, da esquerda no desktop */}
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_22%,var(--color-ink)_66%)] md:bg-[linear-gradient(to_right,var(--color-ink)_48%,transparent_72%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_90%,rgb(122_35_53/.45),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_90%,rgb(36_73_122/.45),transparent_60%)]" />
       <Pillars className="text-paper" count={9} />
 
       <motion.div style={{ y: lift }} className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 pt-24 pb-28 sm:px-8 md:justify-center md:pb-20">
@@ -117,8 +117,8 @@ function Situations() {
           <div className="flex flex-wrap content-start items-start gap-2.5" role="tablist" aria-label="Situações">
             {situations.map((it, k) => (
               <button key={it.label} role="tab" aria-selected={k === i} onClick={() => setI(k)}
-                className={`relative cursor-pointer rounded-full border px-4 py-2.5 text-sm font-medium transition ${k === i ? 'border-wine text-paper' : 'border-white/15 text-paper/70 hover:border-white/40'}`}>
-                {k === i && <motion.span layoutId="chip" className="absolute inset-0 rounded-full bg-wine" transition={{ type: 'spring', stiffness: 400, damping: 32 }} />}
+                className={`relative cursor-pointer rounded-full border px-4 py-2.5 text-sm font-medium transition ${k === i ? 'border-brand text-paper' : 'border-white/15 text-paper/70 hover:border-white/40'}`}>
+                {k === i && <motion.span layoutId="chip" className="absolute inset-0 rounded-full bg-brand" transition={{ type: 'spring', stiffness: 400, damping: 32 }} />}
                 <span className="relative">{it.label}</span>
               </button>
             ))}
@@ -127,7 +127,7 @@ function Situations() {
             <AnimatePresence mode="wait">
               <motion.div key={s.label} role="tabpanel" initial={{ opacity: 0, y: 24, filter: 'blur(6px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 exit={{ opacity: 0, y: -16, filter: 'blur(6px)' }} transition={{ duration: .4, ease }}
-                className="rounded-xl border border-gold/25 bg-gradient-to-br from-ink-2 to-ink p-7 shadow-[0_30px_80px_-30px_rgba(122,35,53,.8)]">
+                className="rounded-xl border border-gold/25 bg-gradient-to-br from-ink-2 to-ink p-7 shadow-[0_30px_80px_-30px_rgba(36,73,122,.8)]">
                 <span className="font-serif text-5xl text-gold">0{i + 1}</span>
                 <h3 className="mt-4 font-serif text-3xl font-medium">{s.title}</h3>
                 <p className="mt-3 leading-relaxed text-paper/70">{s.text}</p>
@@ -146,7 +146,7 @@ function Situations() {
 
 function Band() {
   return (
-    <div className="bg-wine py-3 text-paper">
+    <div className="bg-brand py-3 text-paper">
       <CurvedLoop marqueeText={topics.join(' ✦ ') + ' ✦ '} speed={1.4} curveAmount={0} fontSize={56} interactive color="#F7F3EE" fontWeight={400} />
     </div>
   );
@@ -157,7 +157,7 @@ function Areas() {
     <section id="areas" className="py-24 md:py-32">
       <Reveal className="mx-auto max-w-6xl px-5 sm:px-8">
         <h2 className="font-serif text-[clamp(2.3rem,9vw,4.2rem)] leading-[1] font-medium tracking-[-.02em]">
-          Áreas de <span className="it text-wine">atuação</span>
+          Áreas de <span className="it text-brand">atuação</span>
         </h2>
         <p className="mt-3 text-sm text-mute md:hidden">Arraste para o lado →</p>
       </Reveal>
@@ -187,15 +187,15 @@ function Steps() {
       <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.4fr]">
         <Reveal>
           <h2 className="font-serif text-[clamp(2.3rem,9vw,4.2rem)] leading-[1] font-medium tracking-[-.02em] md:sticky md:top-28">
-            Como funciona a <span className="it text-wine">consultoria on-line</span>
+            Como funciona a <span className="it text-brand">consultoria on-line</span>
           </h2>
         </Reveal>
         <div ref={ref} className="relative pl-10">
           <div className="absolute top-2 bottom-2 left-[11px] w-px bg-line" />
-          <motion.div style={{ scaleY: fill }} className="absolute top-2 bottom-2 left-[11px] w-px origin-top bg-wine" />
+          <motion.div style={{ scaleY: fill }} className="absolute top-2 bottom-2 left-[11px] w-px origin-top bg-brand" />
           {steps.map((s, k) => (
             <Reveal key={s.n} delay={k * .05} className="relative pb-12 last:pb-0">
-              <span className="absolute top-1 -left-10 grid h-6 w-6 place-items-center rounded-full border border-wine bg-paper text-[10px] font-bold text-wine">{k + 1}</span>
+              <span className="absolute top-1 -left-10 grid h-6 w-6 place-items-center rounded-full border border-brand bg-paper text-[10px] font-bold text-brand">{k + 1}</span>
               <h3 className="text-xl font-semibold">{s.title}</h3>
               <p className="mt-2 max-w-md leading-relaxed text-mute">{s.text}</p>
             </Reveal>
@@ -227,7 +227,7 @@ function Team() {
                   <h3 className="mt-2 font-serif text-3xl font-medium">{l.name}</h3>
                   <p className="mt-1 text-sm text-paper/50">{l.oab}</p>
                   <p className="mt-4 leading-relaxed text-paper/70">{l.bio}</p>
-                  <a href={waTo(l.id)} target="_blank" rel="noopener" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-wine px-5 py-3.5 font-semibold transition hover:bg-wine-2 sm:w-auto">
+                  <a href={waTo(l.id)} target="_blank" rel="noopener" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-5 py-3.5 font-semibold transition hover:bg-brand-2 sm:w-auto">
                     <MessageCircle size={18} aria-hidden="true" /> WhatsApp · {l.phoneLabel}
                   </a>
                 </div>
@@ -264,7 +264,7 @@ function MobileBar() {
           <div className="grid grid-cols-2 gap-2">
             {lawyers.map(l => (
               <a key={l.id} href={waTo(l.id)} target="_blank" rel="noopener"
-                className="flex items-center justify-center gap-2 rounded-md bg-wine px-3 py-3 text-sm font-semibold text-paper active:bg-wine-2">
+                className="flex items-center justify-center gap-2 rounded-md bg-brand px-3 py-3 text-sm font-semibold text-paper active:bg-brand-2">
                 <MessageCircle size={16} aria-hidden="true" /> {l.short}
               </a>
             ))}
