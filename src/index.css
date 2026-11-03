@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* Paleta: vinho do colete dela, dourado/madeira do escritório e preto */
+@theme {
+  --color-paper: #F7F3EE;
+  --color-rose: #EFE2DE;
+  --color-wine: #7A2335;
+  --color-wine-2: #5E1A28;
+  --color-gold: #B08D57;
+  --color-ink: #1B1416;
+  --color-ink-2: #2A2024;
+  --color-mute: #6B5F62;
+  --color-line: #E2D7CD;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+}
+
+html { scroll-behavior: smooth; color-scheme: light; }
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::selection { background: var(--color-wine); color: var(--color-paper); }
+
+.it { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
+
+/* Botão principal (inspirado nos botões "shine" do Uiverse) */
+.btn-shine {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; gap: .75rem;
+  background: var(--color-wine); color: var(--color-paper);
+  font-weight: 700; border-radius: 6px; padding: 1.05rem 1.4rem 1.05rem 1.7rem;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / .15) inset, 0 18px 40px -14px rgb(94 26 40 / .55);
+  transition: transform .25s, box-shadow .25s;
+}
+.btn-shine::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / .28) 50%, transparent 70%);
+  transform: translateX(-120%); animation: shine 3.8s ease-in-out infinite;
+}
+.btn-shine:hover { box-shadow: 0 0 0 1px rgb(255 255 255 / .25) inset, 0 22px 50px -10px rgb(94 26 40 / .7); }
+.btn-shine .arrow { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 4px; background: var(--color-gold); color: var(--color-ink); transition: transform .3s; }
+.btn-shine:hover .arrow { transform: rotate(-45deg); }
+@keyframes shine { 0%, 55% { transform: translateX(-120%); } 85%, 100% { transform: translateX(120%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
