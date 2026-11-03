@@ -43,7 +43,14 @@ function Nav() {
     <motion.header initial={{ y: -60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: .2, duration: .8, ease }}
       className="fixed inset-x-0 top-3 z-40 px-3">
       <nav className="mx-auto flex max-w-6xl items-center justify-between rounded-lg border border-white/10 bg-ink/60 py-2 pr-2 pl-4 text-paper backdrop-blur-xl">
-        <a href="#top" className="py-1.5 font-serif text-lg leading-none font-medium">{FIRM}</a>
+        {/* Assinatura no estilo da logo delas: nome em caixa-alta espaçada e tipo de sociedade em dourado */}
+        <a href="#top" aria-label={`${FIRM} · Sociedade de Advogadas`} className="flex items-center gap-3 py-1">
+          <span className="h-8 w-px bg-gold/60" aria-hidden="true" />
+          <span className="flex flex-col leading-none">
+            <span className="font-serif text-[15px] font-medium tracking-[.2em] uppercase sm:text-base">{FIRM}</span>
+            <span className="mt-1.5 text-[8.5px] font-semibold tracking-[.34em] text-gold uppercase sm:text-[9px]">Sociedade de Advogadas</span>
+          </span>
+        </a>
         <div className="hidden items-center gap-8 text-sm text-paper/60 md:flex">
           <a className="transition hover:text-paper" href="#seu-caso">Seu caso</a>
           <a className="transition hover:text-paper" href="#areas">Áreas</a>
