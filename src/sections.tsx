@@ -5,16 +5,18 @@ import { ArrowUpRight, MessageCircle, Plus } from 'lucide-react';
 import SplitText from '@/components/SplitText';
 import Magnet from '@/components/Magnet';
 import Pillars from '@/components/Pillars';
-import { FACEBOOK, NAME, OAB, OAB_CHECK, PHONE, WHATSAPP, faq } from '@/content';
+import { FIRM_FULL, FIRM_OAB, INSTAGRAM, OAB_CHECK, faq, lawyers, waTo } from '@/content';
 
 /* Peças compartilhadas da página: botão, revelação no scroll, FAQ, CTA final e WhatsApp flutuante */
 
 export const ease = [0.22, 1, 0.36, 1] as const;
 
-export function CtaButton({ children = 'Agendar atendimento' }: { children?: string }) {
+// Sem href, leva à seção da equipe, onde cada sócia tem o seu WhatsApp
+export function CtaButton({ children = 'Agendar consultoria', href = '#equipe' }: { children?: string; href?: string }) {
+  const ext = href.startsWith('http');
   return (
     <Magnet padding={60} magnetStrength={3}>
-      <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-shine">
+      <a href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined} className="btn-shine">
         {children}
         <span className="arrow" aria-hidden="true"><ArrowUpRight size={18} /></span>
       </a>
@@ -75,17 +77,20 @@ export function FinalCta() {
         <SplitText tag="h2" text="Vamos conversar?" className="font-serif text-[clamp(3.2rem,11vw,9rem)] leading-[.9] font-medium tracking-[-.03em]"
           effect="rise" splitType="chars" delay={30} duration={1} mask />
         <Reveal delay={.3}>
-          <p className="mx-auto mt-6 max-w-md text-lg text-paper/65">Conte sua situação e agende um atendimento.</p>
-          <div className="mt-10 flex flex-col items-center gap-4">
-            <CtaButton>{`WhatsApp · ${PHONE}`}</CtaButton>
+          <p className="mx-auto mt-6 max-w-md text-lg text-paper/65">Conte sua situação e agende uma consultoria com uma das sócias.</p>
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            {lawyers.map(l => <CtaButton key={l.id} href={waTo(l.id)}>{`WhatsApp · ${l.short}`}</CtaButton>)}
           </div>
         </Reveal>
       </div>
       <footer className="relative mx-auto flex max-w-6xl flex-wrap justify-between gap-4 border-t border-white/10 px-5 py-8 text-sm text-paper/60 sm:px-8">
-        <span>{NAME} · Advogada · {OAB}</span>
+        <div className="space-y-1">
+          <p className="text-paper/80">{FIRM_FULL} · {FIRM_OAB}</p>
+          {lawyers.map(l => <p key={l.id}>{l.name} · {l.oab}</p>)}
+        </div>
         <div className="flex gap-6">
           <a href={OAB_CHECK} target="_blank" rel="noopener" className="transition hover:text-paper">Verificar inscrição na OAB</a>
-          <a href={FACEBOOK} target="_blank" rel="noopener" className="transition hover:text-paper">Facebook</a>
+          <a href={INSTAGRAM} target="_blank" rel="noopener" className="transition hover:text-paper">@gomesdecarvalhoadv</a>
         </div>
       </footer>
     </section>
@@ -99,7 +104,7 @@ export function FloatingWhatsApp() {
   return (
     <AnimatePresence>
       {show && (
-        <motion.a href={WHATSAPP} target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp"
+        <motion.a href="#equipe" aria-label="Falar com as advogadas pelo WhatsApp"
           initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0, opacity: 0 }}
           className="fixed right-5 bottom-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-wine text-paper shadow-[0_12px_40px_-8px_rgba(94,26,40,.7)]">
           <span className="absolute inset-0 animate-ping rounded-full bg-wine/40" />

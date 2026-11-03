@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Paleta: vinho do colete dela, dourado/madeira do escritório e preto */
+/* Paleta: vinho (destaques dos posts do escritório e colete da Dra. Thaís), dourado/madeira do escritório e preto */
 @theme {
   --color-paper: #F7F3EE;
   --color-rose: #EFE2DE;

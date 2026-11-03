@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react';
 
-/* Fundo de linhas verticais (como as ripas do escritório dela) com feixes dourados descendo, no estilo dos "background beams" do 21st.dev */
+/* Fundo de linhas verticais (como as ripas do escritório) com feixes dourados descendo, no estilo dos "background beams" do 21st.dev */
 export default function Pillars({ count = 14, className = '' }: { count?: number; className?: string }) {
   const still = useReducedMotion();
   return (
